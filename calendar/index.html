@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Naptár</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css"
+        integrity="sha512-AYV0ha03c5r+C3/Wg9U/+HFGEJnSFNnKTLeDgkX2GupEc+8kIpi8tEXpQQDDsC72ERkTrOZzgeLWHn8hfc/MwA=="
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@3.0.0/hint.min.css"
+        integrity="sha512-Wh4+s2lPgPpBCBz8fdVpfOcEw3WJmNRxLefQZ9tlF6gH6iwf+LMZdJjB/qpSLWfk2WOgMqJmcmZDqDgihK5qCA=="
+        crossorigin="anonymous">
+
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.4.21/vue.global.min.js"
+        integrity="sha512-gEM2INjX66kRUIwrPiTBzAA6d48haC9kqrWZWjzrtnpCtBNxOXqXVFEeRDOeVC13pw4EOBrvlsJnNr2MXiQGvg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/luxon/3.4.4/luxon.min.js"
+        integrity="sha512-dUlSLLkxslGILhPdCkALwk4szPhp3xmZIKFtlUD+O9Lslq41Aksmdt5OGqpomDoT4FsCUH70jQU8ezZHI3v1RQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
+
+    <script src="tailwindcss-3.4.1.js" defer></script>
+
+    <script src="main.js" defer></script>
+</head>
+
+<body>
+    <div id="app" class="container mx-auto">
+        <calendar title="Naptár"></calendar>
+        <br>
+        <calendar :year="1991" :month="9" :day="17"></calendar>
+    </div>
+
+    <template id="calendar">
+        <div class="max-w-screen-sm mx-auto text-2xl">
+            <div id="calendar-title" class="text-center">
+                <div>
+                    <button @click="changeYear(-1)">
+                        <i class="ti ti-caret-left-filled"></i>
+                    </button>
+                    <p class="inline-block min-w-36">{{ currentTime.year }}</p>
+                    <button @click="changeYear(1)">
+                        <i class="ti ti-caret-right-filled"></i>
+                    </button>
+                </div>
+
+                <div>
+                    <button @click="changeMonth(-1)">
+                        <i class="ti ti-caret-left-filled"></i>
+                    </button>
+                    <p class="inline-block min-w-36">{{ currentTime.monthLong }}</p>
+                    <button @click="changeMonth(1)">
+                        <i class="ti ti-caret-right-filled"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div id="calendar-body">
+                <ul id="calendar-weekdays"
+                    class="grid grid-cols-7 [&>li]:text-center border-b-2 border-indigo-600 mb-1">
+                    <li v-for="weekday in weekdays">
+                        {{ weekday }}
+                    </li>
+                </ul>
+
+                <ul class="calendar-week grid grid-cols-7 [&>li]:text-center hover:[&>li]:bg-red-600 hover:[&>li]:rounded-full"
+                    v-for="week in weeks">
+                    <li :data-hint="day.specialDay.text"
+                        :class="{ 'today': day.isToday, 'weekend-saturday': day.isSaturday, 'weekend-sunday': day.isSunday, 'special-day': day.specialDay.isSpecialDay, 'hint--bottom': day.specialDay.isSpecialDay, 'not-current-month': !day.isInCurrentMonth }"
+                        v-for="day in week">
+                        {{ day.value }}
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </template>
+</body>
+
+</html>

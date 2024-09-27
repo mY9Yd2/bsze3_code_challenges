@@ -1,0 +1,25 @@
+.calendar-week .today {
+    background-color: aquamarine;
+    border-radius: 9999px;
+}
+
+.calendar-week .not-current-month {
+    color: gray;
+    background-color: beige;
+}
+
+.calendar-week .weekend-saturday {
+    color: goldenrod;
+}
+
+.calendar-week .weekend-sunday {
+    color: blue;
+}
+
+.calendar-week .special-day {
+    outline: 1px solid purple;
+}
+
+.calendar-week .special-day:hover {
+    outline: none;
+}

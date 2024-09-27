@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="list.js" defer></script>
+    <script src="main.js" defer></script>
+</head>
+
+<body>
+    <div id="content">
+        <form>
+            <div>
+                <ul id="list1">
+                    <li>Lexus</li>
+                    <li>Honda</li>
+                    <li>Mazda</li>
+                    <li>Nissan</li>
+                    <li>Subaru</li>
+                    <li>Suzuki</li>
+                    <li>Toyota</li>
+                    <li>Jaguar</li>
+                    <li>Ford</li>
+                    <li>Hyundai</li>
+                    <li>Volkswagen</li>
+                    <li>BMW</li>
+                    <li>Audi</li>
+                    <li>Jeep</li>
+                    <li>Chevrolet</li>
+                    <li>Opel</li>
+                    <li>Porsche</li>
+                    <li>Mercedes-Benz</li>
+                    <li>Citroën</li>
+                    <li>Lotus</li>
+                </ul>
+                <div class="display">
+                    Elemek száma
+                    <div id="list1-length"></div>
+                </div>
+            </div>
+
+            <div class="controls">
+                <div>
+                    <label for="reverse-list">Fordított lista</label>
+                    <input type="checkbox" name="reverse-list" id="reverse-list">
+                </div>
+                <button id="list1Tolist2All" type="button">&gt;&gt;</button>
+                <button id="list1Tolist2" type="button">&gt;</button>
+                <button id="list2Tolist1" type="button">&lt;</button>
+                <button id="list2Tolist1All" type="button">&lt;&lt;</button>
+            </div>
+
+            <div>
+                <ul id="list2"></ul>
+                <div class="display">
+                    Elemek száma
+                    <div id="list2-length"></div>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>
